@@ -36,26 +36,31 @@ public class CustomerController {
             response.put("address2", customer.getAddress2());
 
             if (account != null) {
+
                 Map<String, Object> accountMap = new HashMap<>();
                 accountMap.put("accountNumber", account.getAccountNumber());
                 accountMap.put("accountType", account.getAccountType());
                 accountMap.put("availableBalance", account.getAvailableBalance());
-
 
                 if ("Savings".equalsIgnoreCase(account.getAccountType())) {
                     response.put("savings", accountMap);
                 } else if ("Credit".equalsIgnoreCase(account.getAccountType())) {
                     response.put("credit", accountMap);
                 }
+
             }
+
             response.put("transactionStatusCode", HttpStatus.FOUND.value());
             response.put("transactionStatusDescription", "Customer Account found");
 
             return new ResponseEntity<>(response, HttpStatus.FOUND);
+
         } else {
-            Map<String, Object> response = new HashMap<>();
-            response.put("transactionStatusCode", HttpStatus.NOT_FOUND.value());
+
+            Map<String, Object> response = new LinkedHashMap<>();
             response.put("transactionStatusDescription", "Customer not found");
+            response.put("transactionStatusCode", HttpStatus.NOT_FOUND.value());
+
 
             return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
         }

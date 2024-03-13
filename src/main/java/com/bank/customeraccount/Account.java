@@ -21,6 +21,6 @@ public class Account {
     private double availableBalance;
 
     @OneToOne
-    @JoinColumn(name = "customerId") // Add this
+    @JoinColumn(name = "customerId")
     private Customer customerAccount;
 }

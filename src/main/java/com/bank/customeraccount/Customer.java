@@ -1,22 +1,12 @@
 package com.bank.customeraccount;
 
 import jakarta.persistence.*;
-
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
-import java.util.List;
-
-import jakarta.persistence.*;
-
-import jakarta.validation.constraints.NotNull;
-import lombok.Data;
-
-import java.util.List;
-
-@Data
 @Table(name = "Customer")
 @Entity
+@Data
 public class Customer {
 
     @Id
