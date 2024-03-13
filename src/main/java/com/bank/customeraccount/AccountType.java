@@ -2,14 +2,10 @@ package com.bank.customeraccount;
 
 import lombok.Getter;
 
-
+@Getter
 public enum AccountType {
     S("savings"),
     C("checking");
-
-    public String getValue() {
-        return value;
-    }
 
     private final String value;
 

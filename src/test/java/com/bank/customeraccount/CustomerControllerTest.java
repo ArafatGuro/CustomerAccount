@@ -27,7 +27,7 @@ public class CustomerControllerTest {
     @MockBean
     private CustomerAccountService customerService;
 
-    private ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     @BeforeEach
     void setUp() {
