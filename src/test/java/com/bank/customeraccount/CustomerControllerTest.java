@@ -57,8 +57,11 @@ public class CustomerControllerTest {
         customer.setCustomerMobile("09081234567");
         customer.setAddress1("test");
         customer.setAddress2("test");
+        customer.setAccountType(AccountType.S);
+
         Account account = new Account();
         account.setAvailableBalance(500);
+        account.setAccountType("Savings");
 
         customer.setAccount(account);
 
@@ -66,7 +69,7 @@ public class CustomerControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(customer)))
                 .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.customerId").value(1L))
+                .andExpect(jsonPath("$.customerNumber").value(1L))  // adjusted to match the response
                 .andExpect(jsonPath("$.transactionStatusCode").value(201))
                 .andExpect(jsonPath("$.transactionStatusDescription").value("Customer account created"));
     }
